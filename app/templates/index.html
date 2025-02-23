@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Juegos de Mesa</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex; margin-bottom: 20px; width: 100%; justify-content: space-between;">
+            <h1>Juegos de Mesa</h1>
+            <a href="/add"><button>Agregar Juego</button></a>
+        </div>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Min Jugadores</th>
+                <th>Max Jugadores</th>
+                <th>Edad Mínima</th>
+                <th>País</th>
+                <th>Costo (USD)</th>
+                <th>Acciones</th>
+            </tr>
+            {% for game in games %}
+            <tr>
+                <td>{{ game['_id'] }}</td>
+                <td>{{ game['nombre'] }}</td>
+                <td>{{ game['min_jugadores'] }}</td>
+                <td>{{ game['max_jugadores'] }}</td>
+                <td>{{ game['edad_min'] }}</td>
+                <td>{{ game['pais'] }}</td>
+                <td>{{ game['costo'] }}</td>
+                <td>
+                    <a href="/game/{{ game['_id'] }}">Ver detalles</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

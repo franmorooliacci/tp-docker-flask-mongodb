@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Detalle del Juego</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="volver-btn">
+            <a href="/"><button>Volver</button></a>
+        </div>
+        <div class="form-container">
+            <h1 style="align-self: center; margin-bottom: 20px;">{{ game['nombre'] }}</h1>
+            <p><strong>ID:</strong> {{ game['_id'] }}</p>
+            <p><strong>Min Jugadores:</strong> {{ game['min_jugadores'] }}</p>
+            <p><strong>Max Jugadores:</strong> {{ game['max_jugadores'] }}</p>
+            <p><strong>Edad Mínima:</strong> {{ game['edad_min'] }}</p>
+            <p><strong>País:</strong> {{ game['pais'] }}</p>
+            <p><strong>Costo (USD):</strong> {{ game['costo'] }}</p>
+            <div style="display: flex; align-self: center; margin-top: 20px;">
+                <a href="/edit/{{ game['_id'] }}" style="margin-right: 10px;"><button>Editar</button></a>
+                <form action="/delete/{{ game['_id'] }}" method="post">
+                    <button type="submit" class="btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

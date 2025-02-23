@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: gamesdb
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app-network
+
+  web:
+    build: .
+    container_name: webapp
+    ports:
+      - "80:80"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+volumes:
+  mongo_data:
+
+networks:
+  app-network:
