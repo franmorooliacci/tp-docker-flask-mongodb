@@ -4,7 +4,6 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-# Conexión a MongoDB. 'mongo' es el nombre del servicio definido en docker-compose.
 client = MongoClient(host='mongo', port=27017, username='user',
                      password='password', authSource='admin')
 db = client.gamesdb
